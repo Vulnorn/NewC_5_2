@@ -9,24 +9,26 @@ namespace Queue
         static void Main(string[] args)
         {
             Queue<int> shoppingQueue;
-            Random random = new Random();
-            int minRandomNumber = 1;
-            int maxRandomNumber = 10;
 
-            shoppingQueue = CreateQueue(random, minRandomNumber, maxRandomNumber);
+            shoppingQueue = CreateQueue();
             WorkShop(shoppingQueue);
         }
 
-        static Queue<int> CreateQueue(Random random, int minRandomNumber, int maxRandomNumber)
+        static Queue<int> CreateQueue()
         {
+            Random random = new Random();
+
             Queue<int> shoppingQueue = new Queue<int>();
 
-            int purchaseAmount;
-            int numberBuyers = random.Next(minRandomNumber, maxRandomNumber);
+            int minRandomNumberBuyers = 1;
+            int maxRandomNumberBuyers = 10;
+            int minRandomPurchaseAmount = 1;
+            int maxRandomPurchaseAmount = 10;           
+            int numberBuyers = random.Next(minRandomNumberBuyers, maxRandomNumberBuyers + 1);
 
             for (int i = numberBuyers; i > 0; i--)
             {
-                purchaseAmount = random.Next(minRandomNumber, maxRandomNumber);
+               int purchaseAmount = random.Next(minRandomPurchaseAmount, maxRandomPurchaseAmount + 1);
                 shoppingQueue.Enqueue(purchaseAmount);
             }
 
